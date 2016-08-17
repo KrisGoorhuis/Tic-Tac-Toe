@@ -1,0 +1,137 @@
+$(document).ready(function() {
+
+   var playerCharacter;
+   var computerCharacter;
+   var turn;
+   var gameWon = false;
+   
+   $("#X").on("click", function() {
+      $("#popup").css("display", "none");
+      playerCharacter = "x";
+      computerCharacter = "o";
+      turn = "player";
+   })
+   $("#O").on("click", function() {
+      $("#popup").css("display", "none"); 
+      playerCharacter = "o";
+      computerCharacter = "x";
+      turn = "computer";
+      computerTurn();
+   })
+
+   
+   $("#one").on("click", function() {
+      if ($("#one").text() == "" && turn == "player") {
+         turn = "computer";
+         $("#one").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         }        
+      }    
+   })
+   $("#two").on("click", function() {
+      if ($("#two").text() == "" && turn == "player") {
+         turn = "computer";
+         $("#two").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#three").on("click", function() {
+      if ($("#three").text() == "" && turn == "player") {
+         turn = "computer";
+         $("#three").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#four").on("click", function() {
+      if ($("#four").text() == "" && turn == "player") {
+         turn = "computer";
+         $("#four").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#five").on("click", function() {
+      if ($("#five").text() == "" && turn == "player") {
+         $("#five").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#six").on("click", function() {
+      if ($("#six").text() == "" && turn == "player") {
+         $("#six").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#seven").on("click", function() {
+      if ($("#seven").text() == "" && turn == "player") {
+         $("#seven").text(playerCharacter); 
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+   $("#eight").on("click", function() {
+      if ($("#eight").text() == "" && turn == "player")
+         $("#eight").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+   })
+   $("#nine").on("click", function() {
+      if ($("#nine").text() == "" && turn == "player") {
+         $("#nine").text(playerCharacter);
+         if (gameWon == false) {
+            winCheck();
+            computerTurn(); 
+         } 
+      }
+   })
+
+   
+   
+   function computerTurn() {
+      var delay = Math.floor((Math.random() * 1000));
+      setTimeout(function() {
+         
+         var openSpaceIDs = [];
+
+         $(document).find("td").each(function(){
+            if ($(this).text() == "") {
+               //console.log($(this));
+               openSpaceIDs.push(($(this)[0].id));
+            }
+         })
+
+         var randomPlay = Math.floor((Math.random() * openSpaceIDs.length));
+         var computerPlay = openSpaceIDs[randomPlay] ;
+         $("#" + computerPlay).text(computerCharacter); 
+         winCheck(); 
+         turn = "player";
+      }, delay)  
+      
+      
+   }
+
+   function winCheck() {
+      
+   }
+   
+})
